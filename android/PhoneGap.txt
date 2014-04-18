@@ -1,0 +1,14 @@
+因为，最近一直想做款基于web的app，因此，个人GOOGLE了一天，搭建起了，基本的开发框架。
+这里整理，以方便日后的学习。
+开发需求：基于web的app
+技术支持：android SDK, netbeans8.0 + NBAndroid插件，PhoneGap，artTemplate(js模版引擎)
+一切从这里开始,
+1.netbeans + NBAndroid
+这样的选择，可能和本人对软件开发的理解和偏好有关系。eclipse的插件太多了，当开发时候，总需要安装N个插件，这让事情变的很乱。
+2.android SDK
+从android官网下载对应版本的SDK，按照说明进行安装。（不再详述）
+3.PhoneGap
+从官网下载，PhoneGap压缩包。按照自己希望打包平台选择使用不同的文件，从官方文档中查找使用说明。
+4.artTemplate
+选择使用artTemplate js模版引擎，是想通过，json数据传输，手机渲染效果，来减少对网络的依赖，且能真正实现展示和业务数据分离。
+通过，这几天感觉自己对springMVC高级的使用，还是实践的太少了，如果，有机会的话，以后，当补足。
