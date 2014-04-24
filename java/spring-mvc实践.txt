@@ -1,0 +1,18 @@
+﻿开发目的：Spring-Mvc实践
+开发工具：Netbeans
+技术选择：Spring-Mvc Mybatis Volecity Memcache Jquery Bootstrap
+平台：JDK J2EE-API
+开发分层
+Spring-Mvc + Mybatis + Volecity 后端
+Jquery + Bootstrap 前端
+Mybatis + Memcache 调优策略
+
+案例1：注册用户表单
+客户端
+1.Bootstrap 展现的表单
+2.客户输入数据到表单
+3.Jquery Jquery.Validate 进行表单数据校验
+服务器
+1.Spring-Mvc + J2EE-API（Bean.validation） 注解对表单输入进行校验
+2.Mybatis + Memcache Mybatis Mybatis数据进行插入，Memcache对缓存进行更新
+感悟：多层次，结构更加清晰，后期维护升级简单，且后期开发简单。
