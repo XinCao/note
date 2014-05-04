@@ -14,7 +14,6 @@ Mybatis + Memcache 调优策略
 3.Jquery Jquery.Validate 进行表单数据校验
 服务器
 1.Spring-Mvc + Bean Validation（hibernate-validator-5.1.0.Final.jar + validation-api-1.1.0.Final.jar） 注解对表单输入进行校验
-2.Mybatis + Memcache Mybatis Mybatis数据进行插入，Memcache对缓存进行更新
+2.Mybatis + Memcache Mybatis Mybatis数据进行插入，Memcache中缓存更新
 感悟：多层次，结构更加清晰，后期维护升级简单。
-
-基础设计快完成了。感觉自己对spring mvc 还是不理解，只能借助于度娘和谷歌。实在惭愧，不过我正打算降低开速。，这样，可以给我更多的时间去学习。
+基础设计快完成了。感觉自己对spring mvc 还是不理解，只能借助于度娘和谷歌。实在惭愧，不过我正打算降低开发速度。可以给我更多的时间去学习。

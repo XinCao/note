@@ -16,5 +16,5 @@ org.apache.ibatis.cache.Cache
 <setting name="lazyLoadingEnabled" value="true"/> // 表示启用延迟加载，默认为 true
 <setting name="aggressiveLazyLoading" value="true"/> // 表示启用延迟对象的对象加载，默认true
 mybatis-configure-settings
-我的感受，这些功能只能说明mybatis关注到这些开发需求。至于是否可以用于开发需求，还能难说。现在，我learning，使用，mysql, jdbc, mybatis, memcached, spymemcached,  mybatis-memcached。我顾虑的事情，mybatis的缓存机制是否可信（其实，缓存本来，就不能完全相信，只能用作提优策略）;延迟加载这种功能，应该尽量少用（如果，妹子的心情我们把握不住，我们就该放弃她了）;谨记，SqlSession是非线程安全的， SqlSessionFactory线程安全（且应该保持应用中单例）;spymemcached的负载能力（不知在那看到，它似乎和memcached连接是单线程的）
+我的感受，这些功能只能说明mybatis关注到这些需求。至于是否可以用于生产开发，还能难说。现在，learning，使用，mysql, jdbc, mybatis, memcached, spymemcached,  mybatis-memcached。我顾虑的事情，mybatis的缓存机制是否可信（其实，缓存本来，就不能完全相信，只能用作提优策略）;延迟加载这种功能，应该尽量少用（如果，妹子的心情我们把握不住，我们就该放弃她了）;谨记，SqlSession是非线程安全的， SqlSessionFactory线程安全（且应该保持应用中单例）;spymemcached的负载能力（不知在那看到，它似乎和memcached连接是单线程的）
 还有疑惑，从memcached中存取数据中的key,中mapper.xml 中代表什么。

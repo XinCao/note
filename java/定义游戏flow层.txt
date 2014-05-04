@@ -1,0 +1,76 @@
+现在的游戏服务器架构：
+从低级到高级:DAO -> Service（于DAO相关） -> Service（多个Service）-> Packet
+1.一个DAO对应一种实体，Service（与DAO相关）则和一种实体相关的所有操作，Service（多个Service）则和多种实体相关的所有操作,Packet 数据包驱动整个游戏的运行
+2.事务定义：事务，一般是指要做的或所做的事情。在计算机术语中是指访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。
+通过上面的推理，产生出flow层来替换 Service（多个Service）。这样保证，项目中所有的Service只操作一种实体。
+flow层：根据游戏处理的业务逻辑，先判断，后操作，等具有流程的业务。可以使用模板的设计模式
+
+package com.todo.flow;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ *
+ * @author caoxin
+ * @param <T>
+ */
+public abstract class AbstractFlow <T extends Object> {
+
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    abstract protected boolean canAction(T t);
+
+    abstract protected void actionImp(T t);
+
+    abstract protected T parse(Object... params);
+
+    public void action(Object... params) {
+        T t = parse(params);
+        if (t != null && canAction(t)) {
+            actionImp(t);
+        } else {
+            logger.info("this flow is not supported, params = {}", params);
+        }
+    }
+}
+
+package com.todo.flow;
+
+import com.todo.model.StringPair;
+import com.todo.model.User;
+import com.todo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ *
+ * @author caoxin
+ */
+@Service
+public class LoginFlow extends AbstractFlow<StringPair> {
+
+    @Autowired
+    private UserService userService;
+
+    @Override
+    protected boolean canAction(StringPair sp) {
+        User user = new User();
+        user.setAccount(sp.getParam1());
+        user.setPasswd(sp.getParam2());
+        return userService.loginCheck(user);
+    }
+
+    @Override
+    protected void actionImp(StringPair sp) {
+        logger.info("login ok!");
+    }
+
+    @Override
+    protected StringPair parse(Object... params) {
+        if (params != null && params.length == 2) {
+            return new StringPair(params[0], params[1]);
+        }
+        return null;
+    }
+}

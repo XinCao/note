@@ -1,0 +1,74 @@
+强大的logback可以解决所有的日志问题且实现了slf4j-api.jar：
+使用方法：
+1.依赖jar包。（logback-classic.jar, logback-core.jar）
+2.配置文件logback.xml。（配置文件放在根目录）
+3.logback.xml配置
+<?xml version='1.0' encoding='UTF-8' ?>
+<configuration scan="true" debug="true">
+    <property file="/home/caoxin/NetBeansProjects/todo/web/WEB-INF/config/defaults.conf" /> // 路径必须为绝对路径
+    <property name="REALM_ID" value="${server.realm}" />
+    <property name="LOG_HOME_DIR" value="${log_home_dir}" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"> // 控制台输出方式
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter"> // 等级为INFO之上的所有输出到控制台的信息
+            <level>INFO</level>
+        </filter>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter"> // 排除这种标志信息
+            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
+                <marker>USER.LOGIN</marker>
+            </evaluator>
+            <OnMismatch>ACCEPT</OnMismatch>
+            <OnMatch>DENY</OnMatch>
+        </filter>
+        <encoder> // 输出格式
+            <charset>UTF-8</charset>
+            <pattern>
+                [%date{yyyy-MM-dd HH:mm:ss}]\t[%thread] %-5level %logger{0} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="USER_LOGIN" class="ch.qos.logback.core.rolling.RollingFileAppender"> // 输出到文件
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter"> // 接受这种标志信息
+            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
+                <marker>USER.LOGIN</marker>
+            </evaluator>
+            <OnMismatch>DENY</OnMismatch>
+            <OnMatch>ACCEPT</OnMatch>
+        </filter>
+        <file>${LOG_HOME_DIR}/log/backup/${REALM_ID}-login.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> // 回滚策略（隔天打包为zip格式）
+            <fileNamePattern>${LOG_HOME_DIR}/log/backup/${REALM_ID}-login.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%date{yyyy-dd-MM HH:mm:ss}]\t%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ERROR_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender"> // 输出到文件
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"> // 等级为ERROR的所有信息
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <file>${LOG_HOME_DIR}/log/backup/${REALM_ID}-error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> // 回滚策略
+            <fileNamePattern>${LOG_HOME_DIR}/log/backup/${REALM_ID}-error.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%date{yyyy-dd-MM HH:mm:ss}]\t%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.todo.log.LogService" level="INFO"> // 指定输出方式的使用范围和等级
+        <appender-ref ref="USER_LOGIN" />
+    </logger>
+
+    <!--TRACE, DEBUG, INFO, WARN, ERROR, ALL and OFF-->
+    <root level="TRACE"> // 指定输出方式的使用等级
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="ERROR_LOG" />
+    </root>
+</configuration>
