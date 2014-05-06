@@ -1,0 +1,1 @@
+keytool -genkey -alias jingxin191314@foxmail.com -keyalg RSA -keysize 1024  -validity 365
