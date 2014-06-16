@@ -1,0 +1,7 @@
+Java Code Style
+Eclipse中的Java Code Style为软件编码提供了极大的方便。CodeStyle一般有3个功能：
+Formatter，格式化代码为有序的格式，形成良好代码风格；
+Code Template，辅助生成模板代码，提高编码效率；
+Clean Up，格式化代码并清理或补全代码的相关项，统一代码风格；
+CheckStyle的使用
+为了保证整个团队的代码风格统一，需要对代码做代码风格检查。通常开发人员在提交代码之前，先对整个工程中的Java代码执行CleanUp，然后使用CheckStyle来检查代码风格。

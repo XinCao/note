@@ -1,0 +1,39 @@
+ 好的游戏编辑工具能够减少了我们大量的开发时间，收集后用。
+
+
+物理编辑工具Physics Editing Tools
+Mekanimo 网址：http://www.mekanimo.net/
+PhysicsBench 网址：http://www.cocos2d-iphone.org/forum/topic/9064
+PhysicsEditor 网址：http://www.physicseditor.de/
+VertexHelper 网址：http://www.cocos2d-iphone.org/archives/779
+
+场景编辑工具Scene Editing Tools
+CocosBuilder 网址：http://cocosbuilder.com/
+Cocoshop 网址：http://www.cocos2d-iphone.org/forum/topic/15668
+LevelHelper 网址：http://www.levelhelper.org/
+
+纹理地图集工具Texture Atlas Tools
+DarkFunction Editor 网址：http://darkfunction.com/
+SpriteHelper 网址：http://www.spritehelper.org/
+TexturePacker 网址：http://www.texturepacker.com/
+Zwoptex 网址：http://zwoptexapp.com/
+
+瓦片地图编辑工具Tilemap Editing Tools
+iTileMaps 网址：http://www.klemix.com/page/iTileMaps.aspx
+Tiled Map Editor 网址：http://www.mapeditor.org/
+位图字体工具Bitmap Font Tools
+BMFont (Windows) 网址：http://www.angelcode.com/products/bmfont
+Fonteditor 网址：http://code.google.com/p/fonteditor
+Glyph Designer 网址：http://glyphdesigner.71squared.com/
+Hiero 网址：http://slick.cokeandcode.com/demos/hiero.jnlp
+LabelAtlasCreator 网址：http://www.cocos2d-iphone.org/forum/topic/4357
+
+粒子编辑工具Particle Editing Tools
+ParticleCreator  网址：http://www.cocos2d-iphone.org/forum/topic/16363
+Particle Designer 网址：http://particledesigner.71squared.com/
+
+声音特效编辑工具Audio Effect Editing Tools
+cfxr 网址：http://thirdcog.eu/apps/cfxr/
+
+背景音乐编辑工具Background Music Editing Tools
+GarageBand (MAC 系统自带) 网址：http://itunes.apple.com/cn/app/garageband/id408980954?l=en&mt=12/

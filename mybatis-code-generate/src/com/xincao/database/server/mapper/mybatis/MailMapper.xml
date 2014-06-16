@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xincao.database.server.mapper.MailMapper">
+  <resultMap id="BaseResultMap" type="com.xincao.database.server.model.Mail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mail_box_id" jdbcType="INTEGER" property="mailBoxId" />
+    <result column="sender_id" jdbcType="INTEGER" property="senderId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="create_at" jdbcType="DATE" property="createAt" />
+    <result column="status" jdbcType="CHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mail_box_id, sender_id, content, create_at, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xincao.database.server.model.Mail">
+    insert into mail (id, mail_box_id, sender_id, 
+      content, create_at, status
+      )
+    values (#{id,jdbcType=INTEGER}, #{mailBoxId,jdbcType=INTEGER}, #{senderId,jdbcType=INTEGER}, 
+      #{content,jdbcType=VARCHAR}, #{createAt,jdbcType=DATE}, #{status,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xincao.database.server.model.Mail">
+    insert into mail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mailBoxId != null">
+        mail_box_id,
+      </if>
+      <if test="senderId != null">
+        sender_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="createAt != null">
+        create_at,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mailBoxId != null">
+        #{mailBoxId,jdbcType=INTEGER},
+      </if>
+      <if test="senderId != null">
+        #{senderId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null">
+        #{createAt,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xincao.database.server.model.Mail">
+    update mail
+    <set>
+      <if test="mailBoxId != null">
+        mail_box_id = #{mailBoxId,jdbcType=INTEGER},
+      </if>
+      <if test="senderId != null">
+        sender_id = #{senderId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null">
+        create_at = #{createAt,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xincao.database.server.model.Mail">
+    update mail
+    set mail_box_id = #{mailBoxId,jdbcType=INTEGER},
+      sender_id = #{senderId,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      create_at = #{createAt,jdbcType=DATE},
+      status = #{status,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xincao.database.server.model.Mail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mail_box_id" jdbcType="INTEGER" property="mailBoxId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mail_box_id, content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xincao.database.server.model.Mail">
+    insert into mail (id, mail_box_id, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{mailBoxId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xincao.database.server.model.Mail">
+    insert into mail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mailBoxId != null">
+        mail_box_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mailBoxId != null">
+        #{mailBoxId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xincao.database.server.model.Mail">
+    update mail
+    <set>
+      <if test="mailBoxId != null">
+        mail_box_id = #{mailBoxId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xincao.database.server.model.Mail">
+    update mail
+    set mail_box_id = #{mailBoxId,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
