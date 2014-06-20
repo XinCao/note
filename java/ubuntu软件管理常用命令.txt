@@ -1,0 +1,10 @@
+软件包管理：
+更新软件包列表 sudo apt-get update
+更新所有的软件 sudo apt-get upgrade
+更新 Ubuntu：sudo do-release-upgrade
+设置更新源：sudo vi /etc/apt/sources.list
+查看软件包的信息（描述）：apt-cache show mysql-server
+安装软件包：sudo apt-get install apache
+查找可用的软件包：apt-cache search mysql | grep server
+检查某个软包是否已经安装：dpkg -l mysql
+查看某个软件包包含哪些文件：dpkg -L mysql
