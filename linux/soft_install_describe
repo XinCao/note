@@ -1,0 +1,13 @@
+1. install memcached (useing  automake)
+(1).libevent
+cd libevent_src
+./configure -prefix=/opt/libevent
+make; make install
+(2).memcached
+cd memcached_src
+./configure -prefix=/opt/memcached --with-libevent=/opt/libevent
+make; make install
+2. install redis
+cd redis_src
+make PREFIX=/opt/redis install 
+
